@@ -59,6 +59,15 @@ Type:
 
 Heroku will ask for credentials and return a custom URL. A git repo will be built, too.
 
+## Postgres database
+
+I've used [Postgres.app,](https://postgresapp.com/) a full-featured PostgreSQL installation packaged as a standard Mac app.
+
+The command to create a new database is:
+
+`user=# create database learningflask;`
+
+
 
 
 
