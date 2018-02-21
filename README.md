@@ -61,7 +61,11 @@ Type:
 
 `heroku create`
 
-Heroku will ask for credentials and return a custom URL. A git repo will be built, too.
+Heroku will ask for credentials and return a custom URL.
+
+Changes can be pushed directly to the Heroku app through:
+
+`git push heroku master`
 
 ## Postgres database
 
