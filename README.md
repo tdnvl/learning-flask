@@ -71,9 +71,51 @@ Changes can be pushed directly to the Heroku app through:
 
 I've used [Postgres.app,](https://postgresapp.com/) a full-featured PostgreSQL installation packaged as a standard Mac app.
 
+### Create a new database
+
 The command to create a new database is:
 
 `user=# create database learningflask;`
+
+Connect to the database:
+
+`user=# \c learningflask`
+
+Postgres should return:
+
+`You are now connected to database "learningflask" as user "user".`
+
+### Create a table
+
+```CREATE TABLE users (
+	uid serial PRIMARY KEY,
+	firstname VARCHAR(100) not null,
+	lastname VARCHAR(100) not null,
+	email VARCHAR(120) not null unique,
+	pwdhash VARCHAR(100) not null
+	);```
+
+
+See that the table is created and empty:
+
+`SELECT * from users;`
+
+### Create a new user
+
+`INSERT INTO users (firstname,lastname,email,pwdhash) VALUES ('Thomas','Deneuville','thomas@thomasdeneuville.com','learning-flask');`
+
+
+### Connect the Postgres database to Flask
+
+We will need to install [SQLAlchemy,](https://www.sqlalchemy.org/) a Flask extension for that.
+
+`pip install Flask-Migrate`
+
+Add a line of code in `routes.py`:
+
+`app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'`
+
+## User model
 
 
 
