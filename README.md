@@ -43,7 +43,9 @@ Note the capital P.
 
 Add this line to Procfile:
 
-`web: gunicorn routes: app`
+`web: gunicorn routes:app`
+
+Note that there is no space between `routes:` and `app`. I had one and it broke the Heroku app!
 
 ### Install the Heroky CLI
 
