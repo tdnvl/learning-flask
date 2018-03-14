@@ -87,7 +87,8 @@ Postgres should return:
 
 ### Create a table
 
-```CREATE TABLE users (
+```
+CREATE TABLE users (
 	uid serial PRIMARY KEY,
 	firstname VARCHAR(100) not null,
 	lastname VARCHAR(100) not null,
