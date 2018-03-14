@@ -93,7 +93,8 @@ Postgres should return:
 	lastname VARCHAR(100) not null,
 	email VARCHAR(120) not null unique,
 	pwdhash VARCHAR(100) not null
-	);```
+	);
+```
 
 
 See that the table is created and empty:
