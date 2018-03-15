@@ -11,7 +11,7 @@ This project relies on [virtualenv](https://virtualenv.pypa.io/en/stable/) to sa
 
 To create a virtualenv environment, type in the root folder:
 
-`$ virtualenv ENV`
+`$ virtualenv venv`
 
 To activate it, navigate to the containing folder and type:
 
