@@ -1,5 +1,6 @@
 # Virtual env
 /venv/
+/ENV/
 
 # Mac crap
 .DS_Store
