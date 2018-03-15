@@ -1,5 +1,5 @@
 # Learning Flask
-An API-centric project to learn how to bring Python to the Web through Flask, a micro webdevelopment framework.
+An API-centric project to learn how to bring Python to the Web through Flask, a micro webdevelopment framework. This is based on the Lynda.com course taught by Lalith Polepeddi ([@polepeddi](https://github.com/lpolepeddi)).
 
 ## Course
 
@@ -106,6 +106,10 @@ See that the table is created and empty:
 
 `INSERT INTO users (firstname,lastname,email,pwdhash) VALUES ('Thomas','Deneuville','thomas@thomasdeneuville.com','learning-flask');`
 
+### Salted passwords
+
+The app uses the `generate_password_hash` and `check_password_hash` functions from `werkzeug`. See [this snippet page](http://flask.pocoo.org/snippets/54/) for more info.
+
 
 ### Connect the Postgres database to Flask
 
@@ -118,6 +122,19 @@ Add a line of code in `routes.py`:
 `app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'`
 
 ## User model
+
+## Signing up
+
+### Flask-WTF
+
+Install Flask-WTF by getting back into the venv, then use:
+
+`$ pip install flask-wtf`
+
+### Validating form data
+
+
+
 
 
 
