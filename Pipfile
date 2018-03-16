@@ -1,0 +1,26 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+click = "==6.7"
+flask = "==0.12.2"
+gunicorn = "==19.7.1"
+itsdangerous = "==0.24"
+"jinja2" = "==2.10"
+markupsafe = "==1.0"
+werkzeug = "==0.14.1"
+"psycopg2-binary" = "*"
+
+
+[requires]
+
+python_version = "2.7"
