@@ -141,9 +141,47 @@ Install Flask-WTF by getting back into the venv, then use:
 
 `$ pip install flask-wtf`
 
-### Validating form data
+### Form generation
 
-We need to add:
+We first insert a hidden tag to protect ourselves from CSRF attacks. In the `signup.html` template, in the body of the `<form>`:
+
+`{{ form.hidden_tag() }}`
+
+For each form group (field), we add the field label and the field box:
+
+```
+<div class="form-group">
+	{{ form.first_name.label }}
+	{{ form.first_name }}
+</div>
+```
+
+### Form logic
+
+The `signup.html` page can see two methods: GET when the page is accessed and POST when the form is submitted. We need to account for that logic or we'll otherwise get a method error upon submit:
+
+```
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+
+    if request.method == 'POST':
+    	return "Success!"
+
+    elif request.method == 'GET':
+    	return render_template("signup.html", form=form)
+```
+<div class="form-group">
+	{{ form.first_name.label }}
+
+	{% if form.first_name.errors %}
+		{% for error in form.first_name.errors %}
+			<p class="error-message">{{ error }}</p>
+		{% endfor %}
+	{% endif %}
+
+	{{ form.first_name }}
+</div>
 
 `from wtforms.validators import DataRequired`
 
@@ -156,6 +194,24 @@ We then make sure that these validators are declared for each field. It is possi
 Note that for using the `Email` validator, I had to import it, too:
 
 `from wtforms.validators import DataRequired, Email`
+
+## Showing errors on the front-end
+
+We'll also need to work on the template to loop through the errors that the validators return and display them. For each field in `signup.html`:
+
+```
+<div class="form-group">
+	{{ form.first_name.label }}
+
+	{% if form.first_name.errors %}
+		{% for error in form.first_name.errors %}
+			<p class="error-message">{{ error }}</p>
+		{% endfor %}
+	{% endif %}
+
+	{{ form.first_name }}
+</div>
+```
 
 ### Saving a user to the database
 
