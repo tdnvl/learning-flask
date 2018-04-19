@@ -161,13 +161,11 @@ Note that for using the `Email` validator, I had to import it, too:
 
 Import the `user` class from `models` in `routes.py`. We already import `db`:
 
-`from models import db, user`
+`from models import db, User`
 
 Still in `routes.py`, under the success case for the POST method, create a new user and pass the data we get from the form, field by field, using the `.data` method:
 
 `newuser = User(form.first_name.data,form.last_name.data,form.email.data,form.password.data)`
-
-Note the uppercase U in `User()`. We're instantiating the class, here.
 
 Next, we'll add the info to the database using `db.session.add` and `db.session.commit`:
 
