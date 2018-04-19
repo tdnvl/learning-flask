@@ -73,6 +73,10 @@ I've used [Postgres.app,](https://postgresapp.com/) a full-featured PostgreSQL i
 
 ### Create a new database
 
+To launch postgres in the CLI, type:
+
+`psql postgres`
+
 The command to create a new database is:
 
 `user=# create database learningflask;`
@@ -120,6 +124,12 @@ We will need to install [SQLAlchemy,](https://www.sqlalchemy.org/) a Flask exten
 Add a line of code in `routes.py`:
 
 `app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'`
+
+### Close psql utility
+
+The command is:
+
+`\q`
 
 ## User model
 
