@@ -143,7 +143,38 @@ Install Flask-WTF by getting back into the venv, then use:
 
 ### Validating form data
 
+We need to add:
 
+`from wtforms.validators import DataRequired`
+
+to `forms.py` to import the `DataRequired` WTForms validator. [Read more details on built-in validators.](http://wtforms.readthedocs.io/en/latest/validators.html#built-in-validators)
+
+We then make sure that these validators are declared for each field. It is possible to add a custom message, too. For example, on the email field:
+
+`email = StringField('Email', validators=[DataRequired("Please enter your email address."),Email("Please enter a valid email address.")])`
+
+Note that for using the `Email` validator, I had to import it, too:
+
+`from wtforms.validators import DataRequired, Email`
+
+### Saving a user to the database
+
+Import the `user` class from `models` in `routes.py`. We already import `db`:
+
+`from models import db, user`
+
+Still in `routes.py`, under the success case for the POST method, create a new user and pass the data we get from the form, field by field, using the `.data` method:
+
+`newuser = User(form.first_name.data,form.last_name.data,form.email.data,form.password.data)`
+
+Note the uppercase U in `User()`. We're instantiating the class, here.
+
+Next, we'll add the info to the database using `db.session.add` and `db.session.commit`:
+
+```
+db.session.add(newuser)
+db.session.commit()
+```
 
 
 

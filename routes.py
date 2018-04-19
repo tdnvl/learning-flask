@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
-from models import db
+from models import db, User
 from forms import SignupForm
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
 
 # Heroku database URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ssksxhruuyeypf:d621f2ebfa613396f3f338a90c913b960dfb5b62f62eb38114887cc5c0fa7482@ec2-54-235-146-184.compute-1.amazonaws.com:5432/d561jjsn1du0hq'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ssksxhruuyeypf:d621f2ebfa613396f3f338a90c913b960dfb5b62f62eb38114887cc5c0fa7482@ec2-54-235-146-184.compute-1.amazonaws.com:5432/d561jjsn1du0hq'
 
 db.init_app(app)
 
@@ -25,7 +25,13 @@ def signup():
     form = SignupForm()
 
     if request.method == 'POST':
-    	return "Success!"
+    	if form.validate() == False:
+    		return render_template('signup.html', form=form)
+    	else:
+    		newuser = User(form.first_name.data,form.last_name.data,form.email.data,form.password.data)
+    		db.session.add(newuser)
+    		db.session.commit()
+    		return "Success!"
 
     elif request.method == 'GET':
     	return render_template("signup.html", form=form)
