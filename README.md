@@ -274,7 +274,7 @@ If a user is logged in, they shouldn't see the sign up or the log in form. They 
 
 If a user is logged out, they shouldn't have access to the home page (≠ from index). They should be redirected to the login page.
 
-## Protecting the home page
+### Protecting the home page
 
 Let's add some logic in `home()`:
 
@@ -283,7 +283,7 @@ Let's add some logic in `home()`:
 else:
 	return render_template("home.html)`
 
-## Protecting to the login and signup pages
+### Protecting to the login and signup pages
 
 Under `signup()`:
 
@@ -294,7 +294,31 @@ Add the same code under `login()`.
 
 [Flask-Login](https://flask-login.readthedocs.io/en/latest/) does a really good job at that!
 
+## Bookmarking places
 
+### Create another form
 
+In `forms.py`:
 
+```
+class AddressForm(Form):
+	address = StringField('Address', validators=[DataRequired("Please enter an address.")])
+	submit = SubmitField('Search')
+```
+
+Don't forget to import it to `routes.py`! The import statement now looks like:
+
+`from forms import SignupForm, LoginForm, AddressForm`
+
+Remember: A form has two states: a POST and a GET.
+
+Make sure that the route for `home` has the two methods declared:
+
+`@app.route("/home", methods=['GET', 'POST'])`
+
+Since the page has a form.
+
+## Finally, pushing the app to Heroku
+
+We started by talking about Heroku, and thankfully, the author has published [a wiki explaining in detail how to deploy the app on Heroku!](https://github.com/lpolepeddi/learning-flask/wiki/Deploying-Flask-to-Heroku)
 
