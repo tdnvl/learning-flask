@@ -268,6 +268,31 @@ def logout():
 
 We don't need to create a template for `/logout`. When the page is requested, it simply deletes the cookie and redirects to the home page.
 
+## Authorization
+
+If a user is logged in, they shouldn't see the sign up or the log in form. They should be redirected to the home page.
+
+If a user is logged out, they shouldn't have access to the home page (≠ from index). They should be redirected to the login page.
+
+## Protecting the home page
+
+Let's add some logic in `home()`:
+
+`if 'email' not in session:
+	return redirect(url_for('login'))
+else:
+	return render_template("home.html)`
+
+## Protecting to the login and signup pages
+
+Under `signup()`:
+
+`if 'email' in session:
+	return redirect(url_for('home))`
+
+Add the same code under `login()`.
+
+[Flask-Login](https://flask-login.readthedocs.io/en/latest/) does a really good job at that!
 
 
 
