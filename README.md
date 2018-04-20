@@ -244,6 +244,14 @@ And redirect to the homepage:
 
 `return redirect(url_for('home'))`
 
+### Login
+
+1. Create a new class called login form in `forms.py`
+2. Create a new URL mapping for /login in `routes.py`
+3. Create a web tempate in templates
+
+Don't forget to import the LoginForm we created in `forms.py` in `routes.py` so we can use it in the new class we're creating.
+
 
 
 
