@@ -252,6 +252,22 @@ And redirect to the homepage:
 
 Don't forget to import the LoginForm we created in `forms.py` in `routes.py` so we can use it in the new class we're creating.
 
+### Sign out
+
+Logging a user == creating a new session
+Logging a user out == deleting that session
+
+We delete a session by using the `session.pop()` method. In `routes.py`:
+
+```
+@app.route("/logout")
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('index'))
+```
+
+We don't need to create a template for `/logout`. When the page is requested, it simply deletes the cookie and redirects to the home page.
+
 
 
 
