@@ -230,6 +230,20 @@ db.session.add(newuser)
 db.session.commit()
 ```
 
+## Logging in and logging out
+
+### Sessions
+
+In `routes.py` import: `session, redirect,` and `url_for` from Flask.
+
+When a new user signs up (`request.method == 'POST'` and `form.validate() == True`), create a new session passing the email address:
+
+`session['email'] = newuser.email`
+
+And redirect to the homepage:
+
+`return redirect(url_for('home'))`
+
 
 
 
