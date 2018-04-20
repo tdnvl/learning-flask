@@ -3,10 +3,10 @@ from models import db, User, Place
 from forms import SignupForm, LoginForm, AddressForm
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/learningflask'
 
 # Heroku database URI
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ssksxhruuyeypf:d621f2ebfa613396f3f338a90c913b960dfb5b62f62eb38114887cc5c0fa7482@ec2-54-235-146-184.compute-1.amazonaws.com:5432/d561jjsn1du0hq'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ssksxhruuyeypf:d621f2ebfa613396f3f338a90c913b960dfb5b62f62eb38114887cc5c0fa7482@ec2-54-235-146-184.compute-1.amazonaws.com:5432/d561jjsn1du0hq'
 
 db.init_app(app)
 
